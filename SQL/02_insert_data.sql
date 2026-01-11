@@ -1,0 +1,33 @@
+insert into orders_clean (
+    order_id,
+    order_date,
+    customer_name,
+    email,
+    country,
+    product,
+    category,
+    unit_price,
+    quantity,
+    total,
+    payment_method
+) values
+(1001,'2024-01-05','Juan Perez','juanp@gmail.com','Argentina','Notebook Lenovo','Electronics',1200,1,1200,'credit'),
+(1002,'2024-01-05','Ana Gómez','ana@gmail.com','Argentina','Mouse Logitech','Electronics',25,2,50,'debit'),
+(1003,'2024-01-06','Carlos Ruiz','carlos@gmail.com','España','Teclado Mecanico','Electronics',80,1,80,'credit'),
+(1004,'2024-01-06','Juan Perez','juanp@gmail.com','Argentina','Notebook Lenovo','Electronics',1200,1,1200,'credit'),
+(1005,'2024-01-07','María Lopez','maria@gmail.com','Mexico','Silla Oficina','Furniture',300,1,300,'cash'),
+(1006,'2024-01-07','Pedro Martinez','pedro@gmail.com','España','Mouse Logitech','Electronics',25,3,75,'debit'),
+(1007,'2024-01-08','Ana Gómez','ana@gmail.com','Argentina','Escritorio','Furniture',450,1,450,'credit'),
+(1008,'2024-01-08','Carlos Ruiz','carlos@gmail.com','España','Notebook Lenovo','Electronics',1200,1,1200,'credit'),
+(1009,'2024-01-08','Juan Perez','juanp@gmail.com','Argentina','Mouse Logitech','Electronics',25,4,100,'cash'),
+(1010,'2024-01-09',NULL,NULL,'Argentina','Teclado Mecanico','Electronics',80,1,80,'credit'),
+(1011,'2024-01-10','María Lopez','maria@gmail.com','Mexico','Silla Oficina','Furniture',300,2,600,'debit'),
+(1012,'2024-01-10','Ana Gómez','ana@gmail.com','Argentina','Mouse Logitech','Electronics',25,1,25,'debit');
+
+insert into customer (customer_name, email, country)
+select distinct
+    customer_name,
+    email,
+    country
+from orders_clean
+where email is not null;
